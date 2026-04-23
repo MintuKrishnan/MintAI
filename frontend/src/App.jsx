@@ -199,14 +199,24 @@ const App = () => {
 
                 {/* Delete button */}
                 {deletingId === chat.id ? (
-                  <div className="absolute right-1 top-1/2 -translate-y-1/2 flex items-center gap-1">
-                    <button onClick={() => handleDeleteChat(chat.id)}
-                      className="text-[10px] px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 hover:bg-red-500/40 transition-colors">
-                      Delete
+                  <div className="absolute right-1.5 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                    <button
+                      onClick={() => handleDeleteChat(chat.id)}
+                      title="Confirm delete"
+                      className="w-6 h-6 rounded-md flex items-center justify-center bg-red-500 text-white hover:bg-red-400 transition-all shadow-sm"
+                    >
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6m4-6v6"/>
+                      </svg>
                     </button>
-                    <button onClick={() => setDeletingId(null)}
-                      className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-900/30 text-emerald-600 hover:bg-emerald-900/50 transition-colors">
-                      Cancel
+                    <button
+                      onClick={() => setDeletingId(null)}
+                      title="Cancel"
+                      className="w-6 h-6 rounded-md flex items-center justify-center bg-emerald-700 text-white hover:bg-emerald-600 transition-all shadow-sm"
+                    >
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                      </svg>
                     </button>
                   </div>
                 ) : (

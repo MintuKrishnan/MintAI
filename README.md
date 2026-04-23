@@ -1,6 +1,14 @@
 # Mint AI — ChatGPT Clone
 
+> A full-stack ChatGPT clone built with React + Node.js, powered by OpenAI GPT-4.1. Feature-rich AI chatbot with chat history, markdown rendering, dark mode themes, and a clean mint-themed UI.
+
 A modern AI chat assistant built with **React + Vite** (frontend) and **Node.js + Express** (backend), powered by the OpenAI GPT-4.1 API.
+
+---
+
+## Preview
+
+![Mint AI Screenshot](screenshots/preview.png)
 
 ---
 
