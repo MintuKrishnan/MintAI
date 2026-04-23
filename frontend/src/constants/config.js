@@ -1,0 +1,5 @@
+export const API_URL   = import.meta.env.VITE_API_URL || 'http://localhost:5001'
+export const CHAT_KEY  = 'mint_chats'
+export const SHOP_KEY  = 'mint_shop_chats'
+export const THEME_KEY = 'mint_theme'
+export const MODE_KEY  = 'mint_mode'
