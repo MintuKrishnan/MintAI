@@ -57,7 +57,19 @@ MintAI/
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) v18 or higher
-- An [OpenAI API key](https://platform.openai.com/api-keys)
+- An OpenAI API key (see below)
+
+---
+
+## Getting an OpenAI API Key
+
+1. Go to [platform.openai.com](https://platform.openai.com) and sign up or log in
+2. Click your profile icon (top-right) → **Your profile** → **[API keys](https://platform.openai.com/api-keys)**
+3. Click **+ Create new secret key**, give it a name, and click **Create secret key**
+4. Copy the key — it starts with `sk-` and is only shown once
+5. Paste it as `OPENAI_KEY` in `backend/.env`
+
+> **Note:** The GPT-4.1 model requires a paid OpenAI account with available credits.
 
 ---
 
