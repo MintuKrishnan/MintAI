@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { CHAT_KEY, MODE_KEY, SHOP_KEY, THEME_KEY } from '../constants/config'
+import { CHAT_KEY, MODE_KEY, PROVIDER_KEY, SHOP_KEY, THEME_KEY } from '../constants/config'
 import { THEMES } from '../constants/themes'
 import { loadHistory, makeId, newChat } from '../utils/storage'
 
@@ -8,8 +8,9 @@ export const useHistory = () => {
   const [shopHistory,   setShopHistory]   = useState(() => loadHistory(SHOP_KEY, 'product'))
   const [chatActiveId,  setChatActiveId]  = useState(() => loadHistory(CHAT_KEY, 'chat')[0]?.id ?? '')
   const [shopActiveId,  setShopActiveId]  = useState(() => loadHistory(SHOP_KEY, 'product')[0]?.id ?? '')
-  const [themeId,       setThemeId]       = useState(() => localStorage.getItem(THEME_KEY) || 'forest')
-  const [mode,          setMode]          = useState(() => localStorage.getItem(MODE_KEY) || 'chat')
+  const [themeId,       setThemeId]       = useState(() => localStorage.getItem(THEME_KEY)    || 'forest')
+  const [mode,          setMode]          = useState(() => localStorage.getItem(MODE_KEY)     || 'chat')
+  const [provider,      setProvider]      = useState(() => localStorage.getItem(PROVIDER_KEY) || 'openai')
 
   const isShop   = mode === 'product'
   const chats    = isShop ? shopHistory  : chatHistory
@@ -19,8 +20,9 @@ export const useHistory = () => {
 
   useEffect(() => { localStorage.setItem(CHAT_KEY,  JSON.stringify(chatHistory)) }, [chatHistory])
   useEffect(() => { localStorage.setItem(SHOP_KEY,  JSON.stringify(shopHistory)) }, [shopHistory])
-  useEffect(() => { localStorage.setItem(THEME_KEY, themeId) }, [themeId])
-  useEffect(() => { localStorage.setItem(MODE_KEY,  mode) },    [mode])
+  useEffect(() => { localStorage.setItem(THEME_KEY,    themeId)  }, [themeId])
+  useEffect(() => { localStorage.setItem(MODE_KEY,     mode)     }, [mode])
+  useEffect(() => { localStorage.setItem(PROVIDER_KEY, provider) }, [provider])
 
   // Functional updater so callers get the latest messages array
   const updateActiveChat = useCallback((updater) => {
@@ -76,6 +78,7 @@ export const useHistory = () => {
     chats, activeId, activeChat,
     theme, themeId, setThemeId,
     mode, setMode, isShop,
+    provider, setProvider,
     appendMessage, setTitle,
     handleNewChat, handleSelectChat, handleDeleteChat,
   }

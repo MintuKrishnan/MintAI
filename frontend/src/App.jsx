@@ -6,7 +6,7 @@ import MessageList from './components/chat/MessageList'
 import InputBar from './components/chat/InputBar'
 import LeafIcon from './components/ui/LeafIcon'
 
-const Header = ({ theme, mode, isShop, activeTitle, onToggleSidebar, onNewChat }) => (
+const Header = ({ theme, isShop, activeTitle, onToggleSidebar, onNewChat }) => (
   <header
     className="flex items-center gap-3 px-4 py-3 border-b shrink-0"
     style={{ borderColor: theme.border, background: theme.surface }}
@@ -56,11 +56,12 @@ const App = () => {
     chats, activeId, activeChat,
     theme, themeId, setThemeId,
     mode, setMode, isShop,
+    provider, setProvider,
     appendMessage, setTitle,
     handleNewChat, handleSelectChat, handleDeleteChat,
   } = useHistory()
 
-  const { loading, sendMessage } = useSendMessage({ isShop, appendMessage, setTitle })
+  const { loading, sendMessage } = useSendMessage({ isShop, provider, appendMessage, setTitle })
 
   const messages = useMemo(() => activeChat?.messages ?? [], [activeChat])
 
@@ -71,6 +72,7 @@ const App = () => {
         open={sidebarOpen}
         theme={theme} themeId={themeId} setThemeId={setThemeId}
         mode={mode} setMode={setMode} isShop={isShop}
+        provider={provider} setProvider={setProvider}
         chats={chats} activeId={activeId}
         onSelectChat={handleSelectChat}
         onNewChat={handleNewChat}
@@ -80,7 +82,6 @@ const App = () => {
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header
           theme={theme}
-          mode={mode}
           isShop={isShop}
           activeTitle={activeChat?.title ?? 'Mint AI'}
           onToggleSidebar={() => setSidebarOpen(v => !v)}

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { API_URL } from '../constants/config'
 
-export const useSendMessage = ({ isShop, appendMessage, setTitle }) => {
+export const useSendMessage = ({ isShop, provider, appendMessage, setTitle }) => {
   const [loading, setLoading] = useState(false)
 
   const sendMessage = async (text) => {
@@ -17,7 +17,7 @@ export const useSendMessage = ({ isShop, appendMessage, setTitle }) => {
       const res  = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({ message: text, provider }),
       })
       const data = await res.json()
 

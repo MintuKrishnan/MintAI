@@ -1,25 +1,27 @@
 import LeafIcon from '../ui/LeafIcon'
 import ChatRow from './ChatRow'
 import ModeToggle from './ModeToggle'
+import ProviderPicker from './ProviderPicker'
 import ThemePicker from './ThemePicker'
 
 const Sidebar = ({
   open,
   theme, themeId, setThemeId,
   mode, setMode, isShop,
+  provider, setProvider,
   chats, activeId,
   onSelectChat, onNewChat, onDeleteChat,
 }) => (
   <aside
-    className="flex flex-col flex-shrink-0 transition-all duration-300 border-r overflow-hidden"
+    className="flex flex-col shrink-0 transition-all duration-300 border-r overflow-hidden"
     style={{ width: open ? '260px' : '0px', borderColor: theme.border, background: theme.surface }}
   >
-    <div className="flex flex-col h-full min-w-[260px]">
+    <div className="flex flex-col h-full min-w-65">
 
       {/* Logo */}
       <div className="flex items-center gap-2.5 px-4 py-4" style={{ borderBottom: `1px solid ${theme.border}` }}>
         <div
-          className="w-8 h-8 rounded-xl flex items-center justify-center text-white flex-shrink-0"
+          className="w-8 h-8 rounded-xl flex items-center justify-center text-white shrink-0"
           style={{ background: `linear-gradient(135deg,${theme.accent},${theme.accent}99)` }}
         >
           <LeafIcon size={14} />
@@ -64,6 +66,9 @@ const Sidebar = ({
           />
         ))}
       </div>
+
+      {/* Provider picker */}
+      <ProviderPicker provider={provider} setProvider={setProvider} theme={theme} />
 
       {/* Theme picker */}
       <ThemePicker themeId={themeId} setThemeId={setThemeId} theme={theme} />
