@@ -17,34 +17,39 @@ A modern AI chat assistant built with **React + Vite** (frontend) and **Node.js 
 
 ## Tech Stack
 
-| Layer     | Tech                              |
-|-----------|-----------------------------------|
-| Frontend  | React 19, Vite, Tailwind CSS      |
-| Backend   | Node.js, Express 5                |
-| AI        | OpenAI GPT-4.1 (`/v1/responses`) |
-| Security  | helmet, express-rate-limit        |
+| Layer     | Tech                                      |
+|-----------|-------------------------------------------|
+| Frontend  | React 19.2, Vite (rolldown-vite 7.3), Tailwind CSS v4 |
+| Backend   | Node.js, Express 5                        |
+| AI        | OpenAI GPT-4.1 (`/v1/responses`)         |
+| Security  | helmet, express-rate-limit                |
 
 ---
 
 ## Project Structure
 
 ```
-chatgpt-clone/
+MintAI/
 ├── backend/
 │   ├── server.js          # Express API server
 │   ├── .env               # Your secrets (not committed)
 │   ├── .env.example       # Template for .env
 │   └── package.json
 └── frontend/
-    └── vite-project/
-        ├── src/
-        │   ├── App.jsx    # Main React app
-        │   └── index.css  # Animations & global styles
-        ├── public/
-        │   └── mint.svg   # Favicon
-        ├── .env           # Frontend env vars (not committed)
-        ├── .env.example   # Template for .env
-        └── package.json
+    ├── src/
+    │   ├── App.jsx        # Main React app
+    │   ├── App.css
+    │   ├── index.css      # Tailwind imports, animations & global styles
+    │   └── main.jsx
+    ├── public/
+    │   └── mint.svg       # Favicon
+    ├── index.html
+    ├── vite.config.js
+    ├── postcss.config.js
+    ├── eslint.config.js
+    ├── .env               # Frontend env vars (not committed)
+    ├── .env.example       # Template for .env
+    └── package.json
 ```
 
 ---
@@ -62,7 +67,7 @@ chatgpt-clone/
 
 ```bash
 git clone <your-repo-url>
-cd chatgpt-clone
+cd MintAI
 ```
 
 ### 2. Configure the backend
@@ -94,7 +99,7 @@ The backend runs at **http://localhost:5001**
 ### 3. Configure the frontend
 
 ```bash
-cd ../frontend/vite-project
+cd ../frontend
 cp .env.example .env
 ```
 
@@ -119,7 +124,7 @@ The app opens at **http://localhost:5174**
 
 ```bash
 # Frontend
-cd frontend/vite-project
+cd frontend
 npm run build     # outputs to dist/
 
 # Backend
@@ -141,7 +146,7 @@ For deployment, set `CLIENT_ORIGIN` in the backend `.env` to your frontend's pro
 | `PORT`          | Port the backend listens on        | `5001`                    |
 | `CLIENT_ORIGIN` | Allowed frontend origin for CORS   | `http://localhost:5174`   |
 
-### Frontend (`frontend/vite-project/.env`)
+### Frontend (`frontend/.env`)
 
 | Variable       | Description               | Default                  |
 |----------------|---------------------------|--------------------------|
